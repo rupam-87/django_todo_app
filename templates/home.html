@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<h1>TODO APP</h1>
+<form action="{% url 'add' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" placeholder="point to remember" name="notes">
+    <input type="submit" value="save">
+</form>
+{% for d in data %}
+<form action="/delete/{{d.id}}/" method="POST">
+    {% csrf_token %}
+    <h4>{{d.content}}</h4>
+    <input type="submit" value="delete">
+</form>
+{% endfor %}
+
+
+</body>
+</html>
